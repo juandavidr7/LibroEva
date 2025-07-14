@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './PhotoAlbum.css';
 
-// Importar las fotos reales desde la carpeta src/Fotos
+// Importar todas las fotos disponibles desde la carpeta src/Fotos
 import foto1 from '../Fotos/IMG_20250419_105250796_HDR.jpg';
 import foto2 from '../Fotos/IMG_20250419_101901630_HDR.jpg';
 import foto3 from '../Fotos/IMG_20250418_102417644_HDR.jpg';
@@ -18,93 +18,121 @@ import foto13 from '../Fotos/IMG-20250712-WA0036.jpg';
 import foto14 from '../Fotos/IMG-20250712-WA0032.jpg';
 import foto15 from '../Fotos/IMG-20250712-WA0030.jpg';
 import foto16 from '../Fotos/IMG-20250412-WA0073.jpg';
-import foto17 from '../Fotos/IMG-20250210-WA0126.jpg';
-import foto18 from '../Fotos/IMG-20250210-WA0113.jpg';
-import foto19 from '../Fotos/AirBrush_20250712182704.jpg';
-import foto20 from '../Fotos/20250417_131922_Original.JPG';
-
-// Importar fotos adicionales
-import foto21 from '../Fotos/IMG-20250412-WA0025.jpg';
-import foto22 from '../Fotos/IMG-20241222-WA0002.jpg';
-import foto23 from '../Fotos/IMG-20241102-WA0023.jpg';
-import foto24 from '../Fotos/IMG-20220418-WA0097.jpg';
-import foto25 from '../Fotos/IMG-20210925-WA0057.jpg';
-import foto26 from '../Fotos/IMG-20210905-WA0014.jpg';
-import foto27 from '../Fotos/IMG-20210619-WA0016.jpg';
-import foto28 from '../Fotos/IMG-20210619-WA0015.jpg';
-import foto29 from '../Fotos/IMG-20210530-WA0027.jpg';
-import foto30 from '../Fotos/IMG_20221210_202958.jpg';
-
-// Importar screenshots de Facebook más interesantes
-import foto31 from '../Fotos/Screenshot_20250712_183510_Gallery.jpg';
-import foto32 from '../Fotos/Screenshot_20221022-125933_WhatsApp.jpg';
-import foto33 from '../Fotos/Screenshot_2025-07-12-22-45-47-578_com.facebook.katana-edit.jpg';
-import foto34 from '../Fotos/Screenshot_2025-07-12-22-44-45-492_com.facebook.katana-edit.jpg';
-import foto35 from '../Fotos/Screenshot_2025-07-12-22-44-36-709_com.facebook.katana-edit.jpg';
-
-// Importar videos
-import video1 from '../Fotos/VID-20250524-WA0053.mp4';
-import video2 from '../Fotos/VID-20250405-WA0040.mp4';
-import video3 from '../Fotos/VID-20250302-WA0026.mp4';
-import video4 from '../Fotos/VID_20250524_150225704.mp4';
-import video5 from '../Fotos/VID_20220917_182833.mp4';
-import video6 from '../Fotos/VID_20210904_155217.mp4';
-import video7 from '../Fotos/VID_20210904_152733.mp4';
-import video8 from '../Fotos/VID_20210725_130409.mp4';
+import foto17 from '../Fotos/IMG-20250412-WA0025.jpg';
+import foto18 from '../Fotos/IMG-20250210-WA0126.jpg';
+import foto19 from '../Fotos/IMG-20250210-WA0113.jpg';
+import foto20 from '../Fotos/IMG-20241222-WA0002.jpg';
+import foto21 from '../Fotos/IMG-20241102-WA0023.jpg';
+import foto22 from '../Fotos/IMG-20220418-WA0097.jpg';
+import foto23 from '../Fotos/IMG-20210925-WA0057.jpg';
+import foto24 from '../Fotos/IMG-20210905-WA0014.jpg';
+import foto25 from '../Fotos/IMG-20210619-WA0016.jpg';
+import foto26 from '../Fotos/IMG-20210619-WA0015.jpg';
+import foto27 from '../Fotos/IMG-20210530-WA0027.jpg';
+import foto28 from '../Fotos/IMG_20221210_202958.jpg';
+import foto29 from '../Fotos/IMG_5977.HEIC';
+import foto30 from '../Fotos/IMG_4626.HEIC';
+import foto31 from '../Fotos/IMG_1911.HEIC';
+import foto32 from '../Fotos/IMG_1908.HEIC';
+import foto33 from '../Fotos/IMG_1906.HEIC';
+import foto34 from '../Fotos/IMG_1906(1).HEIC';
+import foto35 from '../Fotos/IMG_1405.HEIC';
+import foto36 from '../Fotos/IMG_1402.HEIC';
+import foto37 from '../Fotos/IMG_1379.HEIC';
+import foto38 from '../Fotos/IMG_0404.HEIC';
+import foto39 from '../Fotos/AirBrush_20250712182704.jpg';
+import foto40 from '../Fotos/20250417_131922_Original.JPG';
+import foto41 from '../Fotos/Screenshot_20250712_183510_Gallery.jpg';
+import foto42 from '../Fotos/Screenshot_20221022-125933_WhatsApp.jpg';
+import foto43 from '../Fotos/Screenshot_2025-07-12-22-45-47-578_com.facebook.katana-edit.jpg';
+import foto44 from '../Fotos/Screenshot_2025-07-12-22-44-45-492_com.facebook.katana-edit.jpg';
+import foto45 from '../Fotos/Screenshot_2025-07-12-22-44-36-709_com.facebook.katana-edit.jpg';
+import foto46 from '../Fotos/Screenshot_2025-07-12-22-44-28-737_com.facebook.katana-edit.jpg';
+import foto47 from '../Fotos/Screenshot_2025-07-12-22-44-20-168_com.facebook.katana-edit.jpg';
+import foto48 from '../Fotos/Screenshot_2025-07-12-22-44-12-208_com.facebook.katana-edit.jpg';
+import foto49 from '../Fotos/Screenshot_2025-07-12-22-43-58-062_com.facebook.katana-edit.jpg';
+import foto50 from '../Fotos/Screenshot_2025-07-12-22-43-25-779_com.facebook.katana-edit.jpg';
+import foto51 from '../Fotos/Screenshot_2025-07-12-22-43-48-224_com.facebook.katana-edit.jpg';
+import foto52 from '../Fotos/Screenshot_2025-07-12-22-43-15-288_com.facebook.katana-edit.jpg';
+import foto53 from '../Fotos/Screenshot_2025-07-12-22-43-05-641_com.facebook.katana-edit.jpg';
+import foto54 from '../Fotos/Screenshot_2025-07-12-22-42-54-991_com.facebook.katana-edit.jpg';
+import foto55 from '../Fotos/Screenshot_2025-07-12-22-42-44-106_com.facebook.katana-edit.jpg';
+import foto56 from '../Fotos/Screenshot_2025-07-12-22-42-17-855_com.facebook.katana-edit.jpg';
+import foto57 from '../Fotos/Screenshot_2025-07-12-22-41-36-514_com.facebook.katana.jpg';
+import foto58 from '../Fotos/Screenshot_2025-07-12-22-41-26-239_com.facebook.katana-edit.jpg';
+import foto59 from '../Fotos/Screenshot_2025-07-12-22-41-13-137_com.facebook.katana-edit.jpg';
+import foto60 from '../Fotos/Screenshot_2025-07-12-22-41-04-080_com.facebook.katana-edit.jpg';
 
 const PhotoAlbum = () => {
   const [currentSpread, setCurrentSpread] = useState(0);
   const [isFading, setIsFading] = useState(false);
   const [flippedPhotos, setFlippedPhotos] = useState({});
 
-  // Fotos y videos del álbum - mezclados para mayor variedad
-  const media = [
-    { id: 1, src: foto1, type: 'photo', alt: 'Hermosa foto HDR de Evita', comment: '✨ Una radiante sonrisa que ilumina el día, capturada con tecnología HDR para resaltar cada detalle de su belleza natural.' },
-    { id: 2, src: foto2, type: 'photo', alt: 'Momento especial capturado', comment: '💫 Evita en todo su esplendor, donde cada mirada cuenta una historia y cada gesto refleja su personalidad única.' },
-    { id: 3, src: video1, type: 'video', alt: 'Video especial de Evita', comment: '🎬 Un momento en movimiento que captura la esencia de su personalidad vibrante y llena de vida.' },
-    { id: 4, src: foto3, type: 'photo', alt: 'Recuerdo inolvidable', comment: '🌟 Un momento congelado en el tiempo que muestra la elegancia y gracia natural que la caracteriza.' },
-    { id: 5, src: foto4, type: 'photo', alt: 'Sonrisa radiante', comment: '☀️ Su sonrisa contagiosa que puede alegrar cualquier día, un verdadero rayo de sol humano.' },
-    { id: 6, src: video2, type: 'video', alt: 'Momentos en movimiento', comment: '🎥 La vida cobra sentido cuando la vemos en movimiento, cada gesto cuenta una historia única.' },
-    { id: 7, src: foto5, type: 'photo', alt: 'Momento de felicidad', comment: '🌸 La felicidad pura se refleja en sus ojos, creando una imagen que trasciende el tiempo.' },
-    { id: 8, src: foto6, type: 'photo', alt: 'Expresión natural', comment: '🍃 Naturalidad en estado puro, donde la espontaneidad crea la fotografía más hermosa.' },
-    { id: 9, src: video3, type: 'video', alt: 'Video memorable', comment: '📹 Cada segundo de video vale más que mil palabras, mostrando su autenticidad natural.' },
-    { id: 10, src: foto7, type: 'photo', alt: 'Fotografía profesional', comment: '📸 Una imagen profesional que captura no solo su apariencia, sino también su espíritu y carisma.' },
-    { id: 11, src: foto8, type: 'photo', alt: 'Retrato elegante', comment: '👑 Elegancia refinada en cada gesto, mostrando una belleza que va más allá de lo superficial.' },
-    { id: 12, src: video4, type: 'video', alt: 'Video de alta calidad', comment: '🎞️ Un video que muestra la calidad profesional de cada momento capturado con dedicación.' },
-    { id: 13, src: foto9, type: 'photo', alt: 'Imagen de alta calidad', comment: '💎 Cada pixel cuenta una historia, cada detalle revela la perfección de este momento único.' },
-    { id: 14, src: foto10, type: 'photo', alt: 'Momento de boda especial', comment: '💒 Un día mágico donde el amor se hace visible, rodeada de felicidad y buenos deseos.' },
-    { id: 15, src: video5, type: 'video', alt: 'Video especial', comment: '🌟 Un video que captura momentos irrepetibles, llenos de emoción y significado profundo.' },
-    { id: 16, src: foto11, type: 'photo', alt: 'Celebración matrimonial', comment: '💕 El amor en su máxima expresión, celebrando un nuevo capítulo lleno de esperanza y sueños.' },
-    { id: 17, src: foto12, type: 'photo', alt: 'Recuerdo compartido', comment: '🤝 Momentos compartidos que se convierten en tesoros invaluables de la memoria del corazón.' },
-    { id: 18, src: video6, type: 'video', alt: 'Video entrañable', comment: '💝 Un video lleno de cariño que muestra la dulzura y ternura en cada movimiento.' },
-    { id: 19, src: foto13, type: 'photo', alt: 'Momento capturado', comment: '⏰ Un instante perfecto capturado para la eternidad, donde cada segundo valió la pena.' },
-    { id: 20, src: foto14, type: 'photo', alt: 'Sonrisa encantadora', comment: '😊 Su sonrisa encantadora tiene el poder de iluminar incluso los días más grises.' },
-    { id: 21, src: video7, type: 'video', alt: 'Video emotivo', comment: '💕 Un video que transmite emociones puras, mostrando la belleza de los momentos sinceros.' },
-    { id: 22, src: foto15, type: 'photo', alt: 'Expresión dulce', comment: '🍯 Dulzura personificada en una mirada, ternura que se siente a través de la imagen.' },
-    { id: 23, src: foto16, type: 'photo', alt: 'Momento de alegría', comment: '🎉 La alegría desbordante que contagia a todos los que tienen la fortuna de conocerla.' },
-    { id: 24, src: video8, type: 'video', alt: 'Video final', comment: '✨ El broche de oro en video, capturando la esencia completa de su personalidad única.' },
-    { id: 25, src: foto17, type: 'photo', alt: 'Recuerdo hermoso', comment: '🌺 Belleza que trasciende lo físico, mostrando un alma noble y un corazón generoso.' },
-    { id: 26, src: foto18, type: 'photo', alt: 'Imagen memorable', comment: '🎭 Una imagen que quedará grabada en la memoria, llena de significado y emociones profundas.' },
-    { id: 27, src: foto19, type: 'photo', alt: 'Foto editada con cariño', comment: '🎨 Cada retoque hecho con amor, resaltando la belleza que ya existía naturalmente.' },
-    { id: 28, src: foto20, type: 'photo', alt: 'Momento original', comment: '📷 La esencia pura capturada sin filtros, mostrando la autenticidad que la hace única.' },
-    { id: 29, src: foto21, type: 'photo', alt: 'Recuerdo especial', comment: '🌈 Un recuerdo que brilla con luz propia, lleno de momentos únicos e irrepetibles.' },
-    { id: 30, src: foto22, type: 'photo', alt: 'Momento navideño', comment: '🎄 La magia de las fiestas se refleja en su sonrisa, creando recuerdos navideños especiales.' },
-    { id: 31, src: foto23, type: 'photo', alt: 'Imagen noviembre', comment: '🍂 Un momento de otoño que muestra la calidez de su personalidad en cada gesto.' },
-    { id: 32, src: foto24, type: 'photo', alt: 'Recuerdo WhatsApp', comment: '💬 Un momento compartido digitalmente que se convierte en un tesoro físico del corazón.' },
-    { id: 33, src: foto25, type: 'photo', alt: 'Momento septiembre', comment: '🌸 La primavera de su sonrisa que florece en cada fotografía capturada.' },
-    { id: 34, src: foto26, type: 'photo', alt: 'Imagen septiembre', comment: '🌺 Un septiembre lleno de color y vida, reflejado en la belleza de su mirada.' },
-    { id: 35, src: foto27, type: 'photo', alt: 'Recuerdo junio', comment: '☀️ El verano de su alegría que irradia calor y felicidad en cada imagen.' },
-    { id: 36, src: foto28, type: 'photo', alt: 'Momento junio', comment: '🌻 Como un girasol que sigue al sol, su sonrisa ilumina cada día del año.' },
-    { id: 37, src: foto29, type: 'photo', alt: 'Imagen mayo', comment: '🌹 Mayo florece en su sonrisa, mostrando la belleza natural de cada momento.' },
-    { id: 38, src: foto30, type: 'photo', alt: 'Recuerdo diciembre', comment: '❄️ Un diciembre cálido gracias a la calidez de su personalidad única.' },
-    { id: 39, src: foto31, type: 'photo', alt: 'Screenshot galería', comment: '📱 Hasta los screenshots se vuelven arte cuando ella es la protagonista.' },
-    { id: 40, src: foto32, type: 'photo', alt: 'Captura WhatsApp', comment: '💚 Un momento de WhatsApp que se convierte en memoria permanente del corazón.' },
-    { id: 41, src: foto33, type: 'photo', alt: 'Momento Facebook', comment: '📘 Las redes sociales se llenan de luz cuando ella comparte su sonrisa.' },
-    { id: 42, src: foto34, type: 'photo', alt: 'Recuerdo redes', comment: '🌐 Un mundo digital que se vuelve más hermoso con su presencia constante.' },
-    { id: 43, src: foto35, type: 'photo', alt: 'Imagen social', comment: '👥 La vida social cobra sentido cuando se comparte con personas especiales como ella.' }
+  // Fotos del álbum con comentarios mejorados y sin comentarios en la parte frontal
+  const photos = [
+    { id: 1, src: foto1, comment: '🌟 Este momento capturado con tecnología HDR refleja la luz dorada que siempre llevas dentro. Tu sonrisa aquí no es solo una expresión, es un rayo de esperanza que ilumina todo a tu alrededor. Cada detalle de esta imagen cuenta la historia de una persona especial que sabe encontrar la belleza en los momentos simples.' },
+    { id: 2, src: foto2, comment: '💫 Aquí vemos la esencia pura de tu ser, esa naturalidad que te hace única. Tu mirada transmite una profundidad que va más allá de las palabras, como si guardaras secretos hermosos del universo. Esta foto es un testimonio de tu capacidad para crear magia en cualquier lugar donde estés.' },
+    { id: 3, src: foto3, comment: '🌸 La delicadeza de tu expresión en esta imagen es como contemplar una obra de arte viviente. Hay una serenidad en tu rostro que invita a la paz, una tranquilidad que solo las almas nobles pueden irradiar. Esta fotografía captura no solo tu belleza exterior, sino también la hermosura de tu corazón.' },
+    { id: 4, src: foto4, comment: '☀️ Como el amanecer de un día prometedor, tu presencia en esta imagen irradia calidez y esperanza. La luz que te rodea parece bailar contigo, creando una sinfonía visual que habla de alegría y vitalidad. Eres el tipo de persona que hace que los días grises se vuelvan coloridos.' },
+    { id: 5, src: foto5, comment: '🌺 Esta imagen captura un momento de felicidad genuina, esa que nace desde el alma y se refleja en cada gesto. Tu sonrisa aquí es contagiosa, tiene el poder de cambiar el ánimo de quien la contempla. Es una fotografía que preserva la esencia de lo que significa vivir con plenitud.' },
+    { id: 6, src: foto6, comment: '🍃 La naturalidad de este momento es extraordinaria. Sin poses forzadas, sin artificios, solo tú siendo auténticamente tú. Esta espontaneidad es lo que te hace tan especial, esa capacidad de ser genuina en un mundo que a veces exige máscaras. Tu autenticidad es tu mayor belleza.' },
+    { id: 7, src: foto7, comment: '📸 Una fotografía profesional que logra capturar no solo tu imagen, sino también tu espíritu. El fotógrafo supo ver más allá del objetivo y plasmar esa chispa especial que tienes. Esta imagen es un recordatorio de que algunas personas están destinadas a brillar naturalmente frente a las cámaras.' },
+    { id: 8, src: foto8, comment: '👑 Elegancia en estado puro. Esta imagen transmite una sofisticación natural que no se puede fingir ni aprender, simplemente se tiene. Tu postura, tu mirada, cada detalle habla de una persona que conoce su valor y lo lleva con gracia. Eres realeza en el sentido más auténtico de la palabra.' },
+    { id: 9, src: foto9, comment: '💎 Como una joya preciosa, esta imagen destaca por su calidad excepcional. Cada pixel parece haber sido cuidadosamente colocado para crear una obra maestra. Pero más allá de la técnica, lo que realmente hace brillar esta foto es la persona que aparece en ella: tú, con toda tu luminosidad natural.' },
+    { id: 10, src: foto10, comment: '💒 En este día mágico de bodas, fuiste como un rayo de sol que iluminó la celebración. Tu presencia añadió ese toque especial que hace que los momentos importantes sean inolvidables. Esta imagen captura no solo un evento, sino también tu capacidad para llevar alegría a las ocasiones más significativas.' },
+    { id: 11, src: foto11, comment: '💕 El amor se respira en esta imagen, y tú eres parte fundamental de esa atmósfera de felicidad. Tu sonrisa genuina y tu energía positiva contribuyeron a hacer de este día algo verdaderamente especial. Esta foto es un testimonio de cómo tu presencia puede transformar cualquier celebración en algo mágico.' },
+    { id: 12, src: foto12, comment: '🤝 Los recuerdos compartidos son tesoros invaluables, y esta imagen es una prueba de ello. Aquí vemos momentos que trascienden el tiempo, conexiones humanas que perduran más allá de las circunstancias. Tu capacidad para crear vínculos especiales con las personas es uno de tus dones más hermosos.' },
+    { id: 13, src: foto13, comment: '⏰ Un instante perfecto congelado en el tiempo. Esta fotografía captura uno de esos momentos únicos que solo suceden una vez y que merecen ser preservados para siempre. Tu expresión aquí habla de satisfacción, de estar exactamente donde necesitas estar, viviendo exactamente el momento que necesitas vivir.' },
+    { id: 14, src: foto14, comment: '😊 Tu sonrisa en esta imagen es como un medicamento para el alma. Tiene esa cualidad especial de poder alegrar el día más difícil, de convertir la tristeza en esperanza. Esta fotografía es un recordatorio de que algunas personas tienen el don de curar corazones solo con su presencia.' },
+    { id: 15, src: foto15, comment: '🍯 La dulzura personificada en una imagen. Tu expresión transmite una ternura que llega directamente al corazón, como la caricia de una brisa suave en un día de primavera. Esta fotografía captura esa parte tuya que siempre busca lo mejor en los demás y en las situaciones.' },
+    { id: 16, src: foto16, comment: '🎉 La alegría desbordante que se ve en esta imagen es contagiosa. Tu capacidad para encontrar razones para celebrar la vida es inspiradora. Esta fotografía es un testimonio de tu espíritu festivo, de tu habilidad para convertir momentos ordinarios en celebraciones extraordinarias.' },
+    { id: 17, src: foto17, comment: '🌺 Esta imagen refleja una belleza que va mucho más allá de lo físico. Hay una profundidad en tu mirada que habla de experiencias vividas, de lecciones aprendidas, de una sabiduría ganada con gracia. Tu belleza interior se hace visible en cada gesto, en cada sonrisa sincera.' },
+    { id: 18, src: foto18, comment: '🎭 Una imagen que quedará grabada en la memoria por mucho tiempo. No solo por la calidad técnica, sino por la historia que cuenta, por las emociones que transmite. Esta fotografía es un capítulo importante en el libro de tu vida, un momento que define quien eres y hacia dónde vas.' },
+    { id: 19, src: foto19, comment: '💌 Esta imagen de febrero de 2025 captura un momento especial en el tiempo. Tu sonrisa aquí parece anticipar todas las cosas buenas que están por venir. Es una fotografía llena de esperanza y posibilidades, como si el universo estuviera conspirando para crear algo hermoso.' },
+    { id: 20, src: foto20, comment: '🎄 Una imagen navideña que irradia calidez y espíritu festivo. Tu presencia aquí añade ese toque especial que hace que las celebraciones sean realmente memorables. Esta fotografía captura no solo un momento en el tiempo, sino también la magia que llevas a donde quiera que vayas.' },
+    { id: 21, src: foto21, comment: '🍂 Una imagen de noviembre que transmite la belleza de los cambios de estación. Como las hojas que cambian de color, tú tienes esa capacidad hermosa de adaptarte y florecer en cada etapa de tu vida. Esta fotografía es un recordatorio de que el cambio puede ser hermoso cuando se abraza con gracia.' },
+    { id: 22, src: foto22, comment: '🌷 Una imagen de abril que captura la esencia de la primavera. Tu sonrisa aquí es como el florecimiento de una flor después del invierno, llena de vida nueva y posibilidades frescas. Esta fotografía simboliza el renacimiento y la esperanza que siempre llevas contigo.' },
+    { id: 23, src: foto23, comment: '🍀 Una imagen de septiembre que refleja la transición hacia nuevos comienzos. Tu expresión aquí transmite una mezcla de nostalgia por lo vivido y emoción por lo que está por venir. Esta fotografía captura esa sabiduría especial que tienes para navegar los cambios de la vida con elegancia.' },
+    { id: 24, src: foto24, comment: '🌟 Una imagen de septiembre que brilla con luz propia. Tu presencia aquí es como una estrella que guía en la oscuridad, ofreciendo esperanza y dirección. Esta fotografía es un testimonio de tu capacidad para ser un faro de luz en la vida de las personas que te rodean.' },
+    { id: 25, src: foto25, comment: '🌊 Una imagen de junio que fluye con naturalidad como el agua de un río. Tu expresión aquí transmite una serenidad que solo se encuentra en las personas que han aprendido a fluir con la vida. Esta fotografía captura esa sabiduría especial que tienes para encontrar paz en medio de cualquier tormenta.' },
+    { id: 26, src: foto26, comment: '💝 Una imagen de junio que es como un regalo para los ojos. Tu sonrisa aquí es tan pura y genuina que parece iluminar toda la fotografía. Esta imagen es un recordatorio de que los mejores regalos de la vida no vienen envueltos en papel, sino que se encuentran en momentos como estos.' },
+    { id: 27, src: foto27, comment: '🌺 Una imagen de mayo que florece con belleza natural. Tu presencia aquí es como la primavera personificada, llena de vida, color y promesas de cosas hermosas por venir. Esta fotografía captura esa energía renovadora que siempre llevas contigo.' },
+    { id: 28, src: foto28, comment: '❄️ Una imagen de diciembre que conserva la calidez humana a pesar del frío de la temporada. Tu sonrisa aquí es como una chimenea encendida en una noche de invierno, ofreciendo confort y alegría. Esta fotografía demuestra que tu luz interior puede brillar en cualquier estación.' },
+    { id: 29, src: foto29, comment: '📱 Una imagen capturada con tecnología moderna que refleja tu adaptabilidad a los nuevos tiempos. Tu expresión aquí muestra cómo puedes encontrar belleza y significado incluso en los momentos más espontáneos. Esta fotografía es un testimonio de tu capacidad para crear magia en cualquier situación.' },
+    { id: 30, src: foto30, comment: '🎨 Una imagen que parece haber sido pintada por un artista experto. Los colores, la luz, la composición, todo se combina para crear una obra maestra. Pero el elemento más importante de esta obra de arte eres tú, con toda tu belleza natural y tu espíritu luminoso.' },
+    { id: 31, src: foto31, comment: '🌅 Una imagen que captura la promesa de un nuevo día. Tu expresión aquí transmite esperanza y optimismo, como si estuvieras lista para abrazar todas las oportunidades que la vida tiene para ofrecer. Esta fotografía es un recordatorio de que cada día es una nueva oportunidad para brillar.' },
+    { id: 32, src: foto32, comment: '🎪 Una imagen llena de vida y movimiento. Tu energía aquí es contagiosa, como si estuvieras invitando a todos a unirse a la celebración de la vida. Esta fotografía captura esa parte tuya que siempre está lista para crear momentos memorables y experiencias únicas.' },
+    { id: 33, src: foto33, comment: '🏆 Una imagen que merece todos los premios por su belleza y significado. Tu presencia aquí es victoriosa, como si estuvieras celebrando no solo un momento, sino toda una vida bien vivida. Esta fotografía es un testimonio de tus logros y de tu capacidad para triunfar con gracia.' },
+    { id: 34, src: foto34, comment: '🌈 Una imagen que es como ver un arcoíris después de la tormenta. Tu sonrisa aquí promete que después de cada dificultad viene algo hermoso. Esta fotografía captura esa esperanza inquebrantable que siempre llevas contigo, esa fe en que todo va a estar bien.' },
+    { id: 35, src: foto35, comment: '💐 Una imagen que florece con elegancia y sofisticación. Tu postura aquí transmite una confianza natural que no se puede fingir. Esta fotografía es un recordatorio de que la verdadera elegancia viene de adentro, de conocer tu propio valor y llevarlo con dignidad.' },
+    { id: 36, src: foto36, comment: '🎯 Una imagen que da en el blanco de la perfección. Cada elemento de esta fotografía está en su lugar correcto, creando una armonía visual que es simplemente impresionante. Pero el elemento más importante eres tú, centrando toda la composición con tu presencia magnética.' },
+    { id: 37, src: foto37, comment: '⭐ Una imagen que brilla como una estrella en el cielo nocturno. Tu luz aquí es tan intensa que parece iluminar no solo la fotografía, sino también el corazón de quien la contempla. Esta imagen es un recordatorio de que algunas personas nacen para brillar.' },
+    { id: 38, src: foto38, comment: '🌻 Una imagen que irradia calidez como un girasol siguiendo al sol. Tu expresión aquí transmite una alegría tan pura que es imposible no sonreír al verla. Esta fotografía captura esa parte tuya que siempre busca la luz, incluso en los momentos más oscuros.' },
+    { id: 39, src: foto39, comment: '🎨 Una imagen editada con cariño y atención al detalle. Cada retoque realizado con amor para resaltar la belleza que ya existía naturalmente. Esta fotografía es un testimonio de que a veces los pequeños toques artísticos pueden hacer que algo hermoso se vuelva extraordinario.' },
+    { id: 40, src: foto40, comment: '📷 Una imagen original que captura la esencia pura sin filtros ni artificios. Tu autenticidad aquí es refrescante en un mundo lleno de pretensiones. Esta fotografía es un recordatorio de que la verdadera belleza no necesita disfraces, solo necesita ser genuina.' },
+    { id: 41, src: foto41, comment: '📱 Una captura de pantalla que se convirtió en un recuerdo especial. A veces los momentos más preciados llegan de las formas más inesperadas. Esta imagen demuestra que no importa cómo se capture un momento, lo importante es la persona que aparece en él y la historia que cuenta.' },
+    { id: 42, src: foto42, comment: '💬 Una imagen de WhatsApp que trasciende las plataformas digitales para convertirse en un recuerdo atemporal. Tu sonrisa aquí atraviesa la pantalla y llega directamente al corazón. Esta fotografía prueba que las conexiones humanas reales pueden florecer incluso en el mundo digital.' },
+    { id: 43, src: foto43, comment: '📘 Una captura de Facebook que preserva un momento de alegría compartida. Las redes sociales pueden ser efímeras, pero hay imágenes como esta que merecen ser conservadas para siempre. Tu expresión aquí habla de momentos de felicidad que trascienden las plataformas digitales.' },
+    { id: 44, src: foto44, comment: '🌐 Una imagen digital que captura la esencia de la era moderna. Tu adaptabilidad a los nuevos tiempos se refleja en cómo puedes crear momentos hermosos incluso en el mundo virtual. Esta fotografía es un puente entre lo tradicional y lo contemporáneo.' },
+    { id: 45, src: foto45, comment: '💫 Una captura que brilla con luz propia en el universo digital. Tu presencia aquí trasciende las limitaciones de la tecnología para tocar el alma de quien la contempla. Esta imagen es prueba de que la belleza auténtica puede brillar en cualquier formato.' },
+    { id: 46, src: foto46, comment: '🎭 Una imagen que cuenta una historia sin necesidad de palabras. Tu expresión aquí es tan elocuente que habla directamente al corazón. Esta fotografía captura uno de esos momentos en los que una imagen vale más que mil palabras.' },
+    { id: 47, src: foto47, comment: '🌟 Una captura que destaca entre miles en el mar digital. Tu luz aquí es tan intensa que logra atravesar la pantalla y llegar al alma. Esta imagen es un recordatorio de que algunas personas tienen el don de brillar sin importar el medio.' },
+    { id: 48, src: foto48, comment: '📸 Una imagen que merece estar en una galería de arte. La composición, la luz, la expresión, todo se combina para crear una obra maestra. Pero el elemento más valioso de esta obra de arte eres tú, con toda tu belleza natural y tu espíritu luminoso.' },
+    { id: 49, src: foto49, comment: '🎨 Una captura que es como contemplar una pintura renacentista. Hay una cualidad atemporal en tu expresión que trasciende las épocas. Esta imagen podría haber sido tomada en cualquier momento de la historia y seguiría siendo igualmente hermosa.' },
+    { id: 50, src: foto50, comment: '🌺 Una imagen que florece con belleza natural en el jardín digital. Tu sonrisa aquí es como una flor que no necesita temporada para brillar. Esta fotografía captura esa parte tuya que siempre encuentra formas de crear belleza, sin importar las circunstancias.' },
+    { id: 51, src: foto51, comment: '💎 Una captura que brilla como una joya preciosa en el tesoro de los recuerdos. Tu presencia aquí añade valor a cada pixel, convirtiendo una simple imagen en un tesoro invaluable. Esta fotografía es un recordatorio de que tú eres la joya más preciosa en cualquier colección.' },
+    { id: 52, src: foto52, comment: '🌅 Una imagen que promete un nuevo amanecer lleno de posibilidades. Tu expresión aquí transmite esperanza y optimismo, como si estuvieras lista para conquistar el mundo. Esta fotografía captura esa determinación especial que siempre llevas contigo.' },
+    { id: 53, src: foto53, comment: '🎪 Una captura llena de vida y energía contagiosa. Tu vitalidad aquí es tan intensa que parece saltar de la pantalla. Esta imagen es un testimonio de tu capacidad para llevar alegría y animación a cualquier situación, por más ordinaria que parezca.' },
+    { id: 54, src: foto54, comment: '🏆 Una imagen victoriosa que celebra tus logros y tu crecimiento personal. Tu expresión aquí transmite satisfacción y orgullo bien merecido. Esta fotografía es un recordatorio de que has recorrido un camino largo y hermoso, y que mereces celebrar cada paso del viaje.' },
+    { id: 55, src: foto55, comment: '🌈 Una captura que es como ver todos los colores del arcoíris reunidos en una sola imagen. Tu diversidad de expresiones y emociones crea una paleta rica y compleja. Esta fotografía celebra la complejidad hermosa de tu personalidad multifacética.' },
+    { id: 56, src: foto56, comment: '💐 Una imagen que florece con elegancia y gracia natural. Tu postura aquí habla de una confianza que viene de adentro, de conocer tu propio valor. Esta fotografía captura esa dignidad especial que siempre llevas contigo, esa nobleza que no se puede fingir.' },
+    { id: 57, src: foto57, comment: '🎯 Una captura que da en el blanco de la perfección visual. Cada elemento de esta imagen está perfectamente balanceado, creando una composición que es simplemente impresionante. Pero el elemento más importante eres tú, siendo el centro magnético de toda la obra.' },
+    { id: 58, src: foto58, comment: '⭐ Una imagen que brilla con la intensidad de una supernova en el cosmos digital. Tu luz aquí es tan poderosa que parece iluminar no solo la fotografía, sino también el día de quien la contempla. Esta captura es un recordatorio de tu capacidad para ser un faro de luz.' },
+    { id: 59, src: foto59, comment: '🌻 Una captura que irradia calidez como el sol en un día de verano. Tu expresión aquí transmite una alegría tan contagiosa que es imposible no sentirse mejor después de verla. Esta imagen captura esa parte tuya que siempre encuentra razones para sonreír.' },
+    { id: 60, src: foto60, comment: '🎨 Una imagen final que cierra esta colección con broche de oro. Tu presencia aquí es como la firma de un artista en su obra maestra. Esta fotografía no solo termina el álbum, sino que también abre la puerta a todos los momentos hermosos que están por venir en tu vida.' }
   ];
 
-  // Crear spreads (páginas dobles) - portada + fotos/videos
+  // Crear spreads (páginas dobles) - portada + fotos
   const spreads = [];
   
   // Portada (spread 0)
@@ -114,12 +142,12 @@ const PhotoAlbum = () => {
     rightPage: { type: 'cover-right' }
   });
 
-  // Crear spreads con fotos/videos (2 items por spread, uno por página)
-  for (let i = 0; i < media.length; i += 2) {
+  // Crear spreads con fotos (2 fotos por spread, una por página)
+  for (let i = 0; i < photos.length; i += 2) {
     spreads.push({
       id: Math.floor(i / 2) + 1,
-      leftPage: { type: 'media', media: media[i] },
-      rightPage: { type: 'media', media: media[i + 1] || null }
+      leftPage: { type: 'photo', photo: photos[i] },
+      rightPage: { type: 'photo', photo: photos[i + 1] || null }
     });
   }
 
@@ -159,11 +187,11 @@ const PhotoAlbum = () => {
     }
   };
 
-  // Función para manejar el volteo de fotos/videos
-  const toggleMediaFlip = (mediaId) => {
+  // Función para manejar el volteo de fotos
+  const togglePhotoFlip = (photoId) => {
     setFlippedPhotos(prev => ({
       ...prev,
-      [mediaId]: !prev[mediaId]
+      [photoId]: !prev[photoId]
     }));
   };
 
@@ -191,8 +219,8 @@ const PhotoAlbum = () => {
     </div>
   );
 
-  const renderMediaPage = (pageData, isLeft) => {
-    if (!pageData || !pageData.media) {
+  const renderPhotoPage = (pageData, isLeft) => {
+    if (!pageData || !pageData.photo) {
       return (
         <div className={`photo-page ${isLeft ? 'left-page' : 'right-page'}`}>
           <div className="empty-page">
@@ -202,54 +230,35 @@ const PhotoAlbum = () => {
       );
     }
 
-    const isFlipped = flippedPhotos[pageData.media.id];
-    const isVideo = pageData.media.type === 'video';
+    const isFlipped = flippedPhotos[pageData.photo.id];
 
     return (
       <div className={`photo-page ${isLeft ? 'left-page' : 'right-page'}`}>
         <div 
           className={`photo-card ${isFlipped ? 'flipped' : ''}`}
-          onClick={() => toggleMediaFlip(pageData.media.id)}
+          onClick={() => togglePhotoFlip(pageData.photo.id)}
         >
-          {/* Cara frontal - foto o video */}
+          {/* Cara frontal - foto */}
           <div className="photo-front">
             <div className="photo-frame">
-              {isVideo ? (
-                <video 
-                  src={pageData.media.src} 
-                  className="photo-image"
-                  controls
-                  muted
-                  loop
-                  onClick={(e) => e.stopPropagation()}
-                />
-              ) : (
-                <img 
-                  src={pageData.media.src} 
-                  alt={pageData.media.alt} 
-                  className="photo-image"
-                  loading="lazy"
-                />
-              )}
-              <div className="photo-caption">
-                <p>{pageData.media.alt}</p>
-              </div>
+              <img 
+                src={pageData.photo.src} 
+                alt="Foto de Evita" 
+                className="photo-image"
+                loading="lazy"
+              />
             </div>
-            <div className="flip-hint">
-              {isVideo ? 'Click para ver comentario (fuera del video)' : 'Click para ver comentario'}
-            </div>
+            <div className="flip-hint">Click para ver comentario</div>
           </div>
           
           {/* Cara trasera - comentario */}
           <div className="photo-back">
             <div className="comment-card">
               <div className="comment-content">
-                <h4>{isVideo ? '🎬 Comentario del Video' : '💭 Comentario'}</h4>
-                <p>{pageData.media.comment}</p>
+                <h4>💭 Comentario</h4>
+                <p>{pageData.photo.comment}</p>
               </div>
-              <div className="flip-hint">
-                {isVideo ? 'Click para ver video' : 'Click para ver foto'}
-              </div>
+              <div className="flip-hint">Click para ver foto</div>
             </div>
           </div>
         </div>
@@ -265,8 +274,8 @@ const PhotoAlbum = () => {
         return renderCoverLeft();
       case 'cover-right':
         return renderCoverRight();
-      case 'media':
-        return renderMediaPage(pageData, isLeft);
+      case 'photo':
+        return renderPhotoPage(pageData, isLeft);
       default:
         return null;
     }
@@ -329,10 +338,7 @@ const PhotoAlbum = () => {
         {currentSpread === 0 ? 'Portada' : `Páginas ${currentSpread * 2 - 1}-${currentSpread * 2} de ${spreads.length * 2 - 2}`}
       </div>
 
-      {/* Contador de medios */}
-      <div className="media-counter">
-        Total: {media.filter(m => m.type === 'photo').length} fotos + {media.filter(m => m.type === 'video').length} videos
-      </div>
+
     </div>
   );
 };
