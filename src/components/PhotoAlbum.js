@@ -25,7 +25,24 @@ import foto20 from '../Fotos/20250417_131922_Original.JPG';
 
 const PhotoAlbum = () => {
   const [currentSpread, setCurrentSpread] = useState(0);
-  const [isFlipping, setIsFlipping] = useState(false);
+  const [isFading, setIsFading] = useState(false);
+  const [comments, setComments] = useState([
+    {
+      id: 1,
+      author: "María",
+      comment: "¡Qué hermoso álbum! Evita se ve radiante en todas las fotos.",
+      date: "2024-01-15",
+      time: "14:30"
+    },
+    {
+      id: 2,
+      author: "Carlos",
+      comment: "Me encanta la presentación del álbum, muy profesional y elegante.",
+      date: "2024-01-16",
+      time: "10:45"
+    }
+  ]);
+  const [newComment, setNewComment] = useState({ author: '', comment: '' });
 
   // Fotos del álbum - una por página
   const photos = [
@@ -71,33 +88,61 @@ const PhotoAlbum = () => {
   }
 
   const nextSpread = () => {
-    if (currentSpread < spreads.length - 1 && !isFlipping) {
-      setIsFlipping(true);
+    if (currentSpread < spreads.length - 1 && !isFading) {
+      setIsFading(true);
       setTimeout(() => {
         setCurrentSpread(currentSpread + 1);
-        setIsFlipping(false);
-      }, 800);
+        setTimeout(() => {
+          setIsFading(false);
+        }, 50);
+      }, 250);
     }
   };
 
   const prevSpread = () => {
-    if (currentSpread > 0 && !isFlipping) {
-      setIsFlipping(true);
+    if (currentSpread > 0 && !isFading) {
+      setIsFading(true);
       setTimeout(() => {
         setCurrentSpread(currentSpread - 1);
-        setIsFlipping(false);
-      }, 800);
+        setTimeout(() => {
+          setIsFading(false);
+        }, 50);
+      }, 250);
     }
   };
 
   const goToSpread = (spreadIndex) => {
-    if (spreadIndex !== currentSpread && !isFlipping) {
-      setIsFlipping(true);
+    if (spreadIndex !== currentSpread && !isFading) {
+      setIsFading(true);
       setTimeout(() => {
         setCurrentSpread(spreadIndex);
-        setIsFlipping(false);
-      }, 800);
+        setTimeout(() => {
+          setIsFading(false);
+        }, 50);
+      }, 250);
     }
+  };
+
+  // Funciones para manejar comentarios
+  const handleCommentSubmit = (e) => {
+    e.preventDefault();
+    if (newComment.author.trim() && newComment.comment.trim()) {
+      const now = new Date();
+      const comment = {
+        id: comments.length + 1,
+        author: newComment.author.trim(),
+        comment: newComment.comment.trim(),
+        date: now.toISOString().split('T')[0],
+        time: now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })
+      };
+      setComments([...comments, comment]);
+      setNewComment({ author: '', comment: '' });
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewComment(prev => ({ ...prev, [name]: value }));
   };
 
   const renderCoverLeft = () => (
@@ -171,7 +216,7 @@ const PhotoAlbum = () => {
 
   return (
     <div className="album-container">
-      <div className={`book-spread ${isFlipping ? 'flipping' : ''}`}>
+      <div className={`book-spread ${isFading ? 'fading' : ''}`}>
         {/* Sombra del libro */}
         <div className="book-shadow"></div>
         
@@ -194,7 +239,7 @@ const PhotoAlbum = () => {
         <button 
           className="nav-button prev" 
           onClick={prevSpread}
-          disabled={currentSpread === 0 || isFlipping}
+          disabled={currentSpread === 0 || isFading}
         >
           ←
         </button>
@@ -205,7 +250,7 @@ const PhotoAlbum = () => {
               key={index}
               className={`page-indicator ${index === currentSpread ? 'active' : ''}`}
               onClick={() => goToSpread(index)}
-              disabled={isFlipping}
+              disabled={isFading}
             />
           ))}
         </div>
@@ -213,7 +258,7 @@ const PhotoAlbum = () => {
         <button 
           className="nav-button next" 
           onClick={nextSpread}
-          disabled={currentSpread === spreads.length - 1 || isFlipping}
+          disabled={currentSpread === spreads.length - 1 || isFading}
         >
           →
         </button>
@@ -222,6 +267,53 @@ const PhotoAlbum = () => {
       {/* Información de página */}
       <div className="page-info">
         {currentSpread === 0 ? 'Portada' : `Páginas ${currentSpread * 2 - 1}-${currentSpread * 2} de ${spreads.length * 2 - 2}`}
+      </div>
+
+      {/* Sección de comentarios */}
+      <div className="comments-section">
+        <h3 className="comments-title">Comentarios del Álbum</h3>
+        
+        {/* Lista de comentarios */}
+        <div className="comments-list">
+          {comments.map(comment => (
+            <div key={comment.id} className="comment-item">
+              <div className="comment-header">
+                <span className="comment-author">{comment.author}</span>
+                <span className="comment-date">{comment.date} - {comment.time}</span>
+              </div>
+              <p className="comment-text">{comment.comment}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Formulario para nuevo comentario */}
+        <form className="comment-form" onSubmit={handleCommentSubmit}>
+          <div className="form-row">
+            <input
+              type="text"
+              name="author"
+              placeholder="Tu nombre"
+              value={newComment.author}
+              onChange={handleInputChange}
+              className="comment-input name-input"
+              required
+            />
+          </div>
+          <div className="form-row">
+            <textarea
+              name="comment"
+              placeholder="Escribe tu comentario aquí..."
+              value={newComment.comment}
+              onChange={handleInputChange}
+              className="comment-input comment-textarea"
+              rows="3"
+              required
+            />
+          </div>
+          <button type="submit" className="submit-comment-btn">
+            Agregar Comentario
+          </button>
+        </form>
       </div>
     </div>
   );

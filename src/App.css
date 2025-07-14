@@ -8,8 +8,8 @@ body {
   font-family: 'Product Sans', sans-serif;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .App {
