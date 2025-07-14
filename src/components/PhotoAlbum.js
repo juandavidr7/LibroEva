@@ -151,6 +151,13 @@ const PhotoAlbum = () => {
     });
   }
 
+  // Página final con agradecimientos
+  spreads.push({
+    id: spreads.length,
+    leftPage: { type: 'final' },
+    rightPage: { type: 'empty' }
+  });
+
   const nextSpread = () => {
     if (currentSpread < spreads.length - 1 && !isFading) {
       setIsFading(true);
@@ -219,6 +226,31 @@ const PhotoAlbum = () => {
     </div>
   );
 
+  const renderFinalPage = () => (
+    <div className="final-page">
+      <div className="final-content">
+        <h1 className="final-title">Gracias por su atención</h1>
+        <div className="final-credits">
+          <p className="credits-text">Hecho por:</p>
+          <p className="credits-names">Juan David Rincón</p>
+          <p className="credits-names">Nicolas Murcia</p>
+          <p className="credits-subtitle">Y todos los que no hicieron presentación</p>
+        </div>
+        <div className="final-decoration">
+          <div className="heart">♥</div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderEmptyPage = () => (
+    <div className="empty-page">
+      <div className="empty-content">
+        <p>Fin del álbum</p>
+      </div>
+    </div>
+  );
+
   const renderPhotoPage = (pageData, isLeft) => {
     if (!pageData || !pageData.photo) {
       return (
@@ -276,6 +308,10 @@ const PhotoAlbum = () => {
         return renderCoverRight();
       case 'photo':
         return renderPhotoPage(pageData, isLeft);
+      case 'final':
+        return renderFinalPage();
+      case 'empty':
+        return renderEmptyPage();
       default:
         return null;
     }
